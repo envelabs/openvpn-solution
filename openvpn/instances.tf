@@ -23,7 +23,7 @@ resource "aws_instance" "bte-openvpn-srvr1" {
     }
   }
 
-  tags {
+  tags = {
     type = "bte-openvpn-srvr"
     env  = "prod"
     Name = "bte-openvpn-srvr1"

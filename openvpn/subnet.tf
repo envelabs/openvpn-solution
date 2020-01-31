@@ -3,7 +3,7 @@ resource "aws_subnet" "bte-openvpn-sn-a" {
   cidr_block = "10.0.1.0/24"
   map_public_ip_on_launch = "true"
   availability_zone = "us-east-1a"
-  tags {
+  tags = {
     type = "bte-openvpn-sn-a"
     env  = "prod"
     Name = "bte-openvpn-sn-a"
@@ -12,7 +12,7 @@ resource "aws_subnet" "bte-openvpn-sn-a" {
 
 resource "aws_route_table" "bte-openvpn-rt-public" {
   vpc_id = "${aws_vpc.bte-openvpn-vpc.id}"
-  tags {
+  tags = {
     type = "bte-openvpn-rt-public"
     env  = "prod"
     Name = "bte-openvpn-rt-public"
@@ -41,7 +41,7 @@ resource "aws_route_table_association" "bte-openvpn-rt-assoc" {
 #resource "aws_eip" "bte-openvpn-nat-eip" {
 #  vpc   = true
 #
-#  tags {
+#  tags = {
 #    type = "bte-openvpn-nat-eip"
 #    env = "vpn"
 #    Name = "bte-openvpn-nat-eip"
@@ -58,7 +58,7 @@ resource "aws_route_table_association" "bte-openvpn-rt-assoc" {
 #    ignore_changes        = ["subnet_id"]
 #  }
 #
-#  tags {
+#  tags = {
 #    type = "bte-openvpn-nat-gw-a"
 #    env = "vpn"
 #    Name = "bte-openvpn-nat-gw-a"
@@ -69,7 +69,7 @@ resource "aws_route_table_association" "bte-openvpn-rt-assoc" {
 resource "aws_eip" "bte-openvpn-srvr1-eip" {
   vpc       = true
   instance  = "${aws_instance.bte-openvpn-srvr1.id}"
-  tags {
+  tags = {
     type = "bte-openvpn-eip"
     env  = "vpn"
     Name = "bte-openvpn-eip"

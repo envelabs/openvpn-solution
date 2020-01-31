@@ -18,8 +18,8 @@ resource "aws_security_group" "bte-openvpn-sg" {
   }
 
   ingress {
-    from_port       = "var.https_port"
-    to_port         = "var.https_port"
+    from_port       = "${var.https_port}"
+    to_port         = "${var.https_port}"
     protocol        = "tcp"
    #security_groups = ["${aws_security_group.bte-openvpn-elb-sg.id}"]
     cidr_blocks     = ["${var.public-ip1}"]
@@ -46,7 +46,7 @@ resource "aws_security_group" "bte-openvpn-sg" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
 
-  tags {
+  tags = {
     Name = "bte-openvpn-sg"
  }
 }
