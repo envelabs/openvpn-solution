@@ -1,4 +1,4 @@
-# NOTE: the ami id selected here for the openvpn solution is a not tiered instance with the amount of 10 connected devices.
+# NOTE: the ami id selected here for the openvpn solution is a tiered instance with the amount of 10 connected devices.
 resource "aws_instance" "bte-openvpn-srvr1" {
   ami           = "ami-0a2cf15ad1bf3fef4"
   instance_type = "t2.medium"
