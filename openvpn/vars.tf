@@ -1,5 +1,5 @@
 # vpc
-variable "bte-openvpn-vpc-cidr" {
+variable "enve-openvpn-vpc-cidr" {
   default = "10.0.1.0/24"
 }
 
@@ -30,7 +30,7 @@ variable "public-ip1" {
 
 # key
 variable "key" {
-  default = "/opt/keys/bte-openvpn-key.pem"
+  default = "/opt/keys/enve-openvpn-key.pem"
   description = "server key"
 }
 

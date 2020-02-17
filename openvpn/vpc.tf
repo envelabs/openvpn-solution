@@ -1,20 +1,20 @@
-resource "aws_vpc" "bte-openvpn-vpc" {
-  cidr_block           = "${var.bte-openvpn-vpc-cidr}"
+resource "aws_vpc" "enve-openvpn-vpc" {
+  cidr_block           = "${var.enve-openvpn-vpc-cidr}"
   enable_dns_hostnames = "true"
   
   tags = {
-    type = "bte-openvpn-vpc"
+    type = "enve-openvpn-vpc"
     env  = "prod"
-    Name = "bte-openvpn-vpc"
+    Name = "enve-openvpn-vpc"
   }
 }
 
-resource "aws_internet_gateway" "bte-openvpn-igw" {
-  vpc_id = "${aws_vpc.bte-openvpn-vpc.id}"
+resource "aws_internet_gateway" "enve-openvpn-igw" {
+  vpc_id = "${aws_vpc.enve-openvpn-vpc.id}"
 
   tags = {
-    type = "bte-openvpn-igw"
+    type = "enve-openvpn-igw"
     env  = "prod"
-    Name = "bte-openvpn-igw"
+    Name = "enve-openvpn-igw"
   }
 }

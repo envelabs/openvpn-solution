@@ -1,19 +1,19 @@
-# NOTE: the ami id selected here for the openvpn solution is a tiered instance with the amount of 10 connected devices.
-resource "aws_instance" "bte-openvpn-srvr1" {
-  ami           = "ami-0a2cf15ad1bf3fef4"
-  instance_type = "t2.medium"
-  key_name = "bte-openvpn-key"
-  vpc_security_group_ids = ["${aws_security_group.bte-openvpn-sg.id}"]
-  subnet_id = "${aws_subnet.bte-openvpn-sn-a.id}"
+# NOTE: the ami id selected here for the vpn solution uses latest 2.7.5 version for openvpn as.
+resource "aws_instance" "enve-openvpn-srvr1" {
+  ami           = "ami-0ca1c6f31c3fb1708"
+  instance_type = "t2.small"
+  key_name = "enve-openvpn-key"
+  vpc_security_group_ids = ["${aws_security_group.enve-openvpn-sg.id}"]
+  subnet_id = "${aws_subnet.enve-openvpn-sn-a.id}"
   associate_public_ip_address = "true"
   source_dest_check = "false"
 
   provisioner "remote-exec" {
     inline = [
       "echo ^C",
-      "sudo hostname bte-openvpn-srvr1",
-      "sudo bash -c 'echo bte-openvpn-srvr1 > /etc/hostname'",
-      "sudo /usr/bin/perl -pi -ne 's/(^127.0.0.1 localhost)/$1 bte-openvpn-srvr1/' /etc/hosts"
+      "sudo hostname enve-openvpn-srvr1",
+      "sudo bash -c 'echo enve-openvpn-srvr1 > /etc/hostname'",
+      "sudo /usr/bin/perl -pi -ne 's/(^127.0.0.1 localhost)/$1 enve-openvpn-srvr1/' /etc/hosts"
     ]
 
   connection {
@@ -25,8 +25,8 @@ resource "aws_instance" "bte-openvpn-srvr1" {
   }
 
   tags = {
-    type = "bte-openvpn-srvr"
+    type = "enve-openvpn-srvr"
     env  = "prod"
-    Name = "bte-openvpn-srvr1"
+    Name = "enve-openvpn-srvr1"
   }
 }
